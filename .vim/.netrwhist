@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/matt/working/The.Definitive.Guide.to.Grails.2/OEBPS'
+let g:netrw_dirhist_2='/home/matt/working/installmentTests'
+let g:netrw_dirhist_3='/home/matt/working/installmentTests/testSite'
+let g:netrw_dirhist_4='/var/lib/mpd/music'
