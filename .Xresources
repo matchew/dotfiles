@@ -1,0 +1,30 @@
+#include "/home/matt/.colors/blue"
+
+! #########################################
+urxvt.termName: rxvt-unicode
+urxvt*perl-lib:         /usr/lib/urxvt/perl
+urxvt*perl-ext-common:      default,matcher,tabbed
+URxvt*tabbed*tabbar-fg        : 0
+URxvt*tabbed*tabbar-bg        : 2
+URxvt*tabbed*tab-fg           : 1 
+URxvt*tabbed*tab-bg           : 0 
+urxvt*perl-matcher:         1
+urxvt*urlLauncher:      /usr/bin/chromium
+urxvt*cursorUnderline: 1
+!urxvt*letterspace: -1
+urxvt*transparent:      true
+urxvt*shading:          20
+urxvt*cursorBlink:      true
+urxvt*scrollBar:        false
+urxvt*font: xft:consolas 
+urxvt*boldFont: xft:consolas
+urxvt*italicFont: -*-lime-*-*-*-*-10-*-*-*-*-*-*-*
+urxvt*bolditalicFont: -*-lime-*-*-*-*-10-*-*-*-*-*-*-*
+
+Xft.dpi:    96
+Xft.rgba:   rgb
+Xft.antialias:  true
+Xft.hinting:    true
+Xft.autohint:   false
+Xft.hintstyle:  hintslight
+Xft.lcdfilter:  lcddefault
