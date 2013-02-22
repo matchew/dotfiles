@@ -143,7 +143,7 @@ visualizer_type = "spectrum"
 ## Note: colors can be nested.
 ##
 #
-#song_list_format = "{%a - }{%t}|{$8%f$9}$R{$3(%l)$9}"
+song_list_format = "{$5%a$9 - }{$7%t$8}|{$8%f$9}$R{$3(%l)$9}{$3 - %y$9}"
 #
 #song_status_format = "{{%a{ \"%b\"{ (%y)}} - }{%t}}|{%f}"
 #
@@ -246,7 +246,7 @@ visualizer_type = "spectrum"
 #
 #playlist_separate_albums = "no"
 #
-#playlist_display_mode = "classic" (classic/columns)
+playlist_display_mode = "columns"
 #
 #browser_display_mode = "classic" (classic/columns)
 #
@@ -266,7 +266,7 @@ visualizer_type = "spectrum"
 ## Note: You can specify third character which will
 ## be used to build 'empty' part of progressbar.
 ##
-#progressbar_look = "=>"
+progressbar_look = "==D"
 #
 #default_place_to_search_in = "database" (database/playlist)
 #
