@@ -10,7 +10,7 @@ set shiftwidth=4
 set mouse=a
 let $GIT_SSL_NO_VERIFY = 'true'
 let g:Powerline_symbols = 'unicode'
-colorsc darkblue
+
 
 filetype off
 set rtp+=~/.vim/bundle/vundle
@@ -23,9 +23,18 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'kevinw/pyflakes-vim'
 Bundle 'Lokaltog/powerline'
+Bundle 'Lokaltog/vim-distinguished'
 Bundle 'majutsushi/tagbar'
 Bundle 'docunext/closetag.vim'
-
+Bundle 'mozilla/doctorjs'
+Bundle 'vim-scripts/256-grayvim'
+Bundle 'vim-scripts/dubs-scheme'
+Bundle 'vim-scripts/white.vim'
+Bundle 'vim-scripts/Mustang2'
 filetype plugin indent on
 
 nnoremap <silent> <F9> : TagbarToggle<CR>
+nnoremap <silent> <F8> : set spell!<CR>
+nnoremap <silent> <F7> : set hlsearch!<CR>
+
+colorsc distinguished
