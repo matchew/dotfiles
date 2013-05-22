@@ -10,7 +10,7 @@ set shiftwidth=4
 set mouse=a
 let $GIT_SSL_NO_VERIFY = 'true'
 let g:Powerline_symbols = 'unicode'
-
+set cc=80
 
 filetype off
 set rtp+=~/.vim/bundle/vundle
@@ -33,6 +33,7 @@ Bundle 'vim-scripts/white.vim'
 Bundle 'vim-scripts/Mustang2'
 filetype plugin indent on
 
+nnoremap <silent> <F10> : NERDTreeToggle<CR>
 nnoremap <silent> <F9> : TagbarToggle<CR>
 nnoremap <silent> <F8> : set spell!<CR>
 nnoremap <silent> <F7> : set hlsearch!<CR>
