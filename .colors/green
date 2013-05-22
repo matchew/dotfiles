@@ -1,0 +1,34 @@
+! #########################################
+! BLUE AWESOME COLORS
+! #########################################
+urxvt*cursorColor: #2f468e
+urxvt*colorUL:  #FFFFFF
+urxvt*colorIT:  #6e98b8
+urxvt*colorBD:  #7791e0
+urxvt*background: #222222
+urxvt*foreground: #FCFCFC
+
+urxvt*color0:   #38402B
+urxvt*color8:   #404040
+
+urxvt*color1:   #6e8e2f
+urxvt*color9:   #Be1077
+
+urxvt*color2:   #424242
+urxvt*color10:  #888c82
+
+urxvt*color3:   #96ba6b
+urxvt*color11:  #b7de8e
+
+urxvt*color4:   #4d821c
+urxvt*color12:  #6fa653
+
+urxvt*color5:   #7d7563
+urxvt*color13:  #9e977d
+
+urxvt*color6:   #6a8555
+urxvt*color14:  #93b86e
+
+urxvt*color7:   #b2b2b2
+urxvt*color15:  #bdbdbd
+
