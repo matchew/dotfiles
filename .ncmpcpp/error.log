@@ -91,3 +91,9 @@ TagLib: FLAC::File::save() -- This can't be right -- an ID3v2 tag after the star
 TagLib: FLAC::File::save() -- This can't be right -- an ID3v2 tag after the start of the FLAC bytestream?  Not writing the ID3v2 tag.
 TagLib: FLAC::File::save() -- This can't be right -- an ID3v2 tag after the start of the FLAC bytestream?  Not writing the ID3v2 tag.
 TagLib: FLAC::File::save() -- This can't be right -- an ID3v2 tag after the start of the FLAC bytestream?  Not writing the ID3v2 tag.
+TagLib: ID3v2.4 no longer supports the frame type TSIZ.  It will be discarded from the tag.
+TagLib: FLAC::File::save() - Cannot save to a read only file.
+TagLib: FLAC::File::save() - Cannot save to a read only file.
+TagLib: FLAC::File::save() - Cannot save to a read only file.
+TagLib: FLAC::File::save() - Cannot save to a read only file.
+TagLib: FLAC::File::scan() -- FLAC stream corrupted

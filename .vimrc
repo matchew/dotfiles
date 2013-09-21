@@ -31,6 +31,7 @@ Bundle 'vim-scripts/256-grayvim'
 Bundle 'vim-scripts/dubs-scheme'
 Bundle 'vim-scripts/white.vim'
 Bundle 'vim-scripts/Mustang2'
+Bundle 'ervandew/eclim'
 filetype plugin indent on
 
 nnoremap <silent> <F10> : NERDTreeToggle<CR>

@@ -1,4 +1,4 @@
-#include "/home/matt/.colors/blueOrg"
+#include "/home/matt/.colors/solarized"
 
 ! #########################################
 urxvt.termName: rxvt-unicode
@@ -7,16 +7,16 @@ urxvt*perl-ext-common:      default,matcher,tabbed
 URxvt*tabbed*tabbar-fg        : 2 
 URxvt*tabbed*tabbar-bg        : 0 
 URxvt*tabbed*tab-fg           : 2 
-URxvt*tabbed*tab-bg           : 3 
+URxvt*tabbed*tab-bg           : 1 
 urxvt*perl-matcher:         1
 urxvt*urlLauncher:      /usr/bin/chromium
 urxvt*cursorUnderline: 1
 urxvt*letterspace: -1
-urxvt*fading:   10
-urxvt*fadeColor:    #222222
+!urxvt*fading:   10
+!urxvt*fadeColor:    #222222
 urxvt*depth:    32
-urxvt*transparent:      true
-urxvt*shading:          20
+urxvt*transparent:     false 
+urxvt*shading:          100 
 urxvt*cursorBlink:      true
 urxvt*scrollBar:        false
 urxvt*font: xft:consolas 
