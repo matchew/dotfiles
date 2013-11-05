@@ -1,0 +1,9 @@
+[user]
+	name = matchew
+	email = mgroth86@gmail.com
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+    st = status
+    sb = submodule
