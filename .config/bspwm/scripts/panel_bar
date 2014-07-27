@@ -1,0 +1,95 @@
+#! /bin/bash
+
+. panel_colors
+
+while read -r line ; do
+echo $line >> /tmp/fifo
+
+    case $line in
+        S*)
+            sys_infos="%{A:urxvt:} terminal %{A} | ${line#?}"
+            ;;
+        T*)
+            title="${line#?} "
+            ;;
+        W*)
+            monitors=
+            monitor="0"
+            IFS=':'
+            set -- ${line#?}
+            while [ $# -gt 0 ] ; do
+                item=$1
+                name=${item#?}
+                case $item in
+                    M*)
+                        monitor=$name
+                        fmt="%{F$ACTIVE_MONITOR_FG}%{B$ACTIVE_MONITOR_BG}"
+                        display=" \u266$(($name + 4)) "
+                        rm_fmt="%{B-}%{F-}" 
+                        monitors[$monitor]="  ${fmt}${display}${rm_fmt}" 
+                        ;;
+                    m*)
+                        # inactive monitor
+                        monitor=$name
+                        fmt="%{F$INACTIVE_MONITOR_FG}%{B$INACTIVE_MONITOR_BG}"
+                        display=" \u266${name} "
+                        rm_fmt="%{B-}%{F-}" 
+                        monitors[$monitor]="  ${fmt}${display}${rm_fmt}" 
+                        ;;
+                    O*)
+                        # focused occupied desktop
+                        fmt="%{F$FOCUSED_OCCUPIED_FG}%{B$FOCUSED_OCCUPIED_BG}%{U$FOREGROUND}%{+u}"  
+                        display=" ${name} "
+                        rm_fmt="%{-u}%{B-}%{F-}"
+                        monitors[$monitor]+="${fmt}${display}${rm_fmt}"
+                        ;;
+                    F*)
+                        # focused free desktop
+                        fmt="%{F$FOCUSED_FREE_FG}%{B$FOCUSED_FREE_BG}%{U$FOREGROUND}%{+u}"  
+                        display=" ${name} "
+                        rm_fmt="%{-u}%{B-}%{F-}"
+                        monitors[$monitor]+="${fmt}${display}${rm_fmt}"
+                        ;;
+                    U*)
+                        # focused urgent desktop
+                        fmt="%{F$FOCUSED_URGENT_FG}%{B$FOCUSED_URGENT_BG}%{U$FOREGROUND}%{+u}"  
+                        display=" ${name} "
+                        rm_fmt="%{-u}%{B-}%{F-}"
+                        monitors[$monitor]+="${fmt}${display}${rm_fmt}"
+                        ;;
+                    o*)
+                        # occupied desktop
+                        fmt="%{F$OCCUPIED_FG}%{B$OCCUPIED_BG}"
+                        display=" ${name} "
+                        rm_fmt="%{B-}%{F-}"
+                        monitors[$monitor]+="${fmt}${display}${rm_fmt}"
+                        ;;
+                    f*)
+                        # free desktop
+                        fmt="%{F$FREE_FG}%{B$FREE_BG}"
+                        display=" ${name} "
+                        rm_fmt="%{B-}%{F-}"
+                        monitors[$monitor]+="${fmt}${display}${rm_fmt}"
+                        ;;
+                    u*)
+                        # urgent desktop
+                        fmt="%{F$URGENT_FG}%{B$URGENT_BG}"
+                        display=" ${name} "
+                        rm_fmt="%{B-}%{F-}"
+                        monitors[$monitor]+="${fmt}${display}${rm_fmt}"
+                        ;;
+                esac
+                shift
+            done
+            ;;
+    esac
+    
+    for i in "${!monitors[@]}"
+    do
+        monitor=${monitors[$i]}
+        printf "%b" "%{l} ${monitor}%{S+}"
+    done
+
+    printf "%s\n" "%{S1}%{c}${title}%{S+}%{r}${sys_infos}"
+
+done

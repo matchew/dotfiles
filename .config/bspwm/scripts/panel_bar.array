@@ -1,0 +1,97 @@
+#! /bin/bash
+
+. panel_colors
+num_mon=3
+while read -r line ; do
+echo $line >> /tmp/fifo
+
+    case $line in
+        S*)
+            sys_infos=" ${line#?}"
+            ;;
+        T*)
+            title=" ${line#?}"
+            ;;
+        W*)
+            wm_infos=""
+            monitors=
+            IFS=':'
+            set -- ${line#?}
+            while [ $# -gt 0 ] ; do
+                item=$1
+                name=${item#?}
+                monitor=""
+                case $item in
+                    M*)
+                        # active monitor
+                        if [ $num_mon -gt 1 ] ; then
+                            #wm_infos="$wm_infos %{F$COLOR_ACTIVE_MONITOR_FG}%{B$COLOR_ACTIVE_MONITOR_BG} + %{B-} %{F-}  "
+                            monitor=$name
+                            printf "%s\n" "active: ${monitor}" >> /tmp/monitor.list
+                            monitors[$monitor]="${monitors[$monitor]} %{F$COLOR_ACTIVE_MONITOR_FG}%{B$COLOR_ACTIVE_MONITOR_BG} + %{B-} %{F-}"
+                        fi
+                        ;;
+                    m*)
+                        # inactive monitor
+                        if [ $num_mon -gt 1 ] ; then
+                            monitor=$name
+                            printf "%s\n" "inactive: ${monitor}" >> /tmp/monitor.list
+                            monitors[$monitor]="${monitors[$monitor]} %{F$COLOR_INACTIVE_MONITOR_FG}%{B$COLOR_INACTIVE_MONITOR_BG} ! %{B-}%{F-} "
+                            #wm_infos="$wm_infos %{F$COLOR_INACTIVE_MONITOR_FG}%{B$COLOR_INACTIVE_MONITOR_BG} ${name} %{B-}%{F-}  "
+                        fi
+                        ;;
+                    O*)
+                        # focused occupied desktop
+                        monitors[$monitor]="${monitors[$monitor]} %{F$COLOR_FOCUSED_OCCUPIED_FG}%{B$COLOR_FOCUSED_OCCUPIED_BG}%{U$COLOR_FOREGROUND}%{+u} ${name} %{-u}%{B-}%{F-}"
+                        #wm_infos="${wm_infos}%{F$COLOR_FOCUSED_OCCUPIED_FG}%{B$COLOR_FOCUSED_OCCUPIED_BG}%{U$COLOR_FOREGROUND}%{+u} ${name} %{-u}%{B-}%{F-}"
+                        ;;
+                    F*)
+                        # focused free desktop
+                       monitors[$monitor]="%${monitors[$monitor]} %{F$COLOR_FOCUSED_FREE_FG}%{B$COLOR_FOCUSED_FREE_BG}%{U$COLOR_FOREGROUND}%{+u} ${name} %{-u}%{B-}%{F-}"
+                        #wm_infos="${wm_infos}%{F$COLOR_FOCUSED_FREE_FG}%{B$COLOR_FOCUSED_FREE_BG}%{U$COLOR_FOREGROUND}%{+u} ${name} %{-u}%{B-}%{F-}"
+                        ;;
+                    U*)
+                        # focused urgent desktop
+                        monitors[$monitor]="${monitors[$monitor]} %{F$COLOR_FOCUSED_URGENT_FG}%{B$COLOR_FOCUSED_URGENT_BG}%{U$COLOR_FOREGROUND}%{+u} ${name} %{-u}%{B-}%{F-}"
+                        #wm_infos="${wm_infos}%{F$COLOR_FOCUSED_URGENT_FG}%{B$COLOR_FOCUSED_URGENT_BG}%{U$COLOR_FOREGROUND}%{+u} ${name} %{-u}%{B-}%{F-}"
+                        ;;
+                    o*)
+                        # occupied desktop
+                        monitors[$monitor]="${monitors[$monitor]} %{F$COLOR_OCCUPIED_FG}%{B$COLOR_OCCUPIED_BG} ${name} %{B-}%{F-}"
+                        #wm_infos="${wm_infos}%{F$COLOR_OCCUPIED_FG}%{B$COLOR_OCCUPIED_BG} ${name} %{B-}%{F-}"
+                        ;;
+                    f*)
+                        # free desktop
+                        monitors[$monitor]="${monitors[$monitor]} %{F$COLOR_FREE_FG}%{B$COLOR_FREE_BG} ${name} %{B-}%{F-}"
+                        #wm_infos="${wm_infos}%{F$COLOR_FREE_FG}%{B$COLOR_FREE_BG} ${name} %{B-}%{F-}"
+                        ;;
+                    u*)
+                        # urgent desktop
+                        monitors[$monitor]="${monitors[$monitor]} %{F$COLOR_URGENT_FG}%{B$COLOR_URGENT_BG} ${name} %{B-}%{F-}" 
+                        #wm_infos="${wm_infos}%{F$COLOR_URGENT_FG}%{B$COLOR_URGENT_BG} ${name} %{B-}%{F-}"
+                        ;;
+                    L*)
+                        # layout
+                        # don't care about layout
+                        #wm_infos="$wm_infos  %{F$COLOR_LAYOUT_FG}%{B$COLOR_LAYOUT_BG} ${name} %{B-}%{F-}"
+                        ;;
+                esac
+                shift
+            done
+            ;;
+    esac
+    printf "%d\n" ${#monitors[@]} >> /tmp/monitor.count
+    printf "%s\n" ${monitors[2]} >> /tmp/2.mon
+    printf "%s\n" ${monitors[1]} >> /tmp/1.mon
+    printf "%s\n" ${monitors[0]} >> /tmp/0.mon
+    for monitor in "${!monitors[@]}"
+    do
+        monitor=${monitors[$i]}
+        #printf "%s" "%{S${i}}%{l}${monitor}"
+        printf "%d" "${i}" >> /tmp/fail.me
+        printf "%s\n\n" "%{S${i}}%{l}${monitor}" >> /tmp/fail.me
+        printf "%s" "%{S\$\{i\}}%{l}${monitors[$i]}" 
+    done
+    printf "%s\n" "%{S1}%{c}${title}%{S+}%{r}${sys_infos}"
+
+done
