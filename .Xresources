@@ -1,33 +1,29 @@
-#include "/home/matt/.colors/solarized"
+#include "/home/matt/.colors/clear"
 
 ! #########################################
 urxvt.termName: rxvt-unicode
 urxvt*perl-lib:         /usr/lib/urxvt/perl
 urxvt*perl-ext-common:      default,matcher,tabbed
-URxvt*tabbed*tabbar-fg        : 2 
-URxvt*tabbed*tabbar-bg        : 0 
-URxvt*tabbed*tab-fg           : 2 
-URxvt*tabbed*tab-bg           : 1 
+URxvt*tabbed*tabbar-fg        : 8 
+URxvt*tabbed*tabbar-bg        : 4 
+URxvt*tabbed*tab-fg           : 0 
+URxvt*tabbed*tab-bg           : 6 
 urxvt*perl-matcher:         1
 urxvt*urlLauncher:      /usr/bin/chromium
+urxvt*matcher*button: 3 
 urxvt*cursorUnderline: 1
 urxvt*letterspace: -1
-!urxvt*fading:   10
-!urxvt*fadeColor:    #222222
 urxvt*depth:    32
 urxvt*transparent:     false 
 urxvt*shading:          100 
 urxvt*cursorBlink:      true
 urxvt*scrollBar:        false
-urxvt*font: xft:consolas 
-urxvt*boldFont: xft:consolas
-urxvt*italicFont: -*-lime-*-*-*-*-10-*-*-*-*-*-*-*
-urxvt*bolditalicFont: -*-lime-*-*-*-*-10-*-*-*-*-*-*-*
-
+urxvt*font: -*-dejavu sans mono-medium-r-normal--*-110-*-*-*-*-iso10646-1 
+urxvt*boldFont: -*-dejavu sans mono-bold-r-normal--*-100-*-*-*-*-iso10646-1 
 Xft.dpi:    96
 Xft.rgba:   rgb
 Xft.antialias:  true
-Xft.hinting:    true
-Xft.autohint:   false
+Xft.hinting:    1 
+Xft.autohint:   0 
 Xft.hintstyle:  hintslight
 Xft.lcdfilter:  lcddefault
